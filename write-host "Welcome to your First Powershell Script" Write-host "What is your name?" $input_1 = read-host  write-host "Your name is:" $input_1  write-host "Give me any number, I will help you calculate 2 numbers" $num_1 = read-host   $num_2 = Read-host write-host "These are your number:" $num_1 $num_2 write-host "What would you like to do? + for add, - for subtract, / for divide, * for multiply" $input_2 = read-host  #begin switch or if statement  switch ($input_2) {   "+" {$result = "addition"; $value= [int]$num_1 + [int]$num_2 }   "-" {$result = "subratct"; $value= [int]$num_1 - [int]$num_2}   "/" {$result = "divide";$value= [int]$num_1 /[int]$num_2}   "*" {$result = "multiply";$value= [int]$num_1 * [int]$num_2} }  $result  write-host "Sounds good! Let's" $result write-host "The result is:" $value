@@ -1,0 +1,26 @@
+write-host "Welcome to your First Powershell Script"
+Write-host "What is your name?"
+$input_1 = read-host
+
+write-host "Your name is:" $input_1
+
+write-host "Give me any number, I will help you calculate 2 numbers"
+$num_1 = read-host  
+$num_2 = Read-host
+write-host "These are your number:" $num_1 $num_2
+write-host "What would you like to do? + for add, - for subtract, / for divide, * for multiply"
+$input_2 = read-host
+
+#begin switch or if statement
+
+switch ($input_2)
+{
+  "+" {$result = "addition"; $value= [int]$num_1 + [int]$num_2 }
+  "-" {$result = "subratct"; $value= [int]$num_1 - [int]$num_2}
+  "/" {$result = "divide";$value= [int]$num_1 / [int]$num_2}
+  "*" {$result = "multiply";$value= [int]$num_1 * [int]$num_2}
+} 
+$result
+
+write-host "Sounds good! Let's" $result
+write-host "The result is:" $value
