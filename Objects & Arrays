@@ -1,0 +1,56 @@
+write-host "This script tests out arrays, objects, and other stuff"
+
+#ways to create an array
+$food ="pizza","cereal", "sushi","noodle","pho","adobo","lechon"
+#makes sure the array is strictly strings
+<#[String[]]$food ="pizza","cereal", "sushi","noodle","pho","adobo","lechon"#>
+
+#another way to create an array (multi-line)
+write-host "`nThis is the food array with 3 objects"
+<#$food = @(
+    "pizza"
+    "cereal"
+    "sushi"
+    "noodle"
+    "pho"
+    "adobo"
+    "lechon"
+)#>
+$food
+
+
+write-host "`nThis is the same array but reverse"
+$food[10..0]
+
+write-host "`nThe output displays only asian food"
+$food[2..7]
+####################
+#OBJECTS
+####################
+#create a new object
+$person = New-Object -TypeName PSCustomObject
+
+#creates anb object with properties use hashtable
+<#
+write-host "`nThe output below is the created object using a hashtable"
+$person = [PSCustomObject] @{
+  #adds the property of name
+  name = "bob"
+  age = "43"
+  sex = "M"
+}
+$person
+#>
+
+#creates a method for a variable
+$person | add-Member  -MemberType ScriptMethod -Name talk -value {Write-host "Hello! I am Bob"}
+#checks out the $person variable properties
+<#write-host "Below displays properties of the person variable`n"
+$person | Get-Member#>
+
+write-host "`nBelow calls on the properties and methods of the created object`n"
+$person.talk()
+#write-host "Bob is " + $person.age() + "years old"
+
+$person | Get-Member
+
